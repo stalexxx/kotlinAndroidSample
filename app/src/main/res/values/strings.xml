@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Hotels</string>
+    <string name="loading">Loading..</string>
+    <string name="default_card_name">Hotel display name</string>
+    <string name="default_card_stars">*****</string>
+
+    <string name="default_card_free_suites">Free suites: %d</string>
+    <string name="distance_from_center">from center: %s</string>
+
+    <string name="sort_dist_asc">By distance asc</string>
+    <string name="sort_dist_desc">By distance desc</string>
+    <string name="sort_suit_asc">By suite count asc</string>
+    <string name="sort_suit_desc">By suite count desc</string>
+    <string name="sort_menu">Choose sort order</string>
+</resources>

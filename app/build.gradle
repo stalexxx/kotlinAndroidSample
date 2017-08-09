@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.aostrovskiy.hotels"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    lintOptions {
+        abortOnError false
+        disable 'InvalidPackage', 'AppLinksAutoVerifyError'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            testCoverageEnabled true
+        }
+    }
+}
+
+ext {
+    supportVersion = "25.3.1"
+    daggerVersion = "2.9"
+    retrofitVersion = "2.2.0"
+    butterknifeVersion = "8.5.1"
+    mockitoVersion = "1.10.19"
+    okHttpVersion = "3.7.0"
+    robolectricVersion = "3.3.2"
+    rxJavaVersion = "2.1.0"
+    rxAndroidVersion = "2.0.1"
+    glideVersion = "3.7.0"
+    glideTransformVersion = "2.0.2"
+    ankoVersion="0.10.1"
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile "com.android.support:appcompat-v7:$supportVersion"
+    compile "com.android.support:support-annotations:$supportVersion"
+
+    compile "com.google.dagger:dagger:$daggerVersion"
+
+    compile "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    compile "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    compile "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion"
+    compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    compile "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+
+    compile "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    compile "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    compile 'nl.littlerobots.rxlint:rxlint:1.2'
+
+    compile "com.android.support:support-v4:$supportVersion"
+    compile "com.android.support:cardview-v7:$supportVersion"
+    compile "com.android.support:recyclerview-v7:$supportVersion"
+
+    compile "com.jakewharton:butterknife:$butterknifeVersion"
+    compile "com.github.bumptech.glide:glide:$glideVersion"
+    compile "jp.wasabeef:glide-transformations:$glideTransformVersion"
+
+    compile "com.android.support:support-annotations:$supportVersion"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.jakewharton:butterknife-compiler:$butterknifeVersion"
+
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    compile "org.jetbrains.anko:anko-sdk15:$ankoVersion" // sdk19, sdk21, sdk23 are also available
+    compile "org.jetbrains.anko:anko-support-v4:$ankoVersion" // In case you need support-v4 bindings
+    compile "org.jetbrains.anko:anko-appcompat-v7:$ankoVersion" // For appcompat-v7 bindings
+    compile "org.jetbrains.anko:anko-recyclerview-v7:$ankoVersion"
+    compile "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$ankoVersion"
+
+}
+kapt {
+    generateStubs = true
+}
+repositories {
+    mavenCentral()
+}
